@@ -21,9 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VK_Users.Settings", "Shared
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VK_Users.Context.Entities", "Data\VK_Users.Context.Entities\VK_Users.Context.Entities.csproj", "{AE162C11-D495-46F0-825B-06A65B68F7D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VK_Users.Api", "Systems\VK_Users.Api\VK_Users.Api.csproj", "{2940B2E4-0AD4-4B0A-A733-0A56C6582776}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VK_Users.Api", "Systems\VK_Users.Api\VK_Users.Api.csproj", "{2940B2E4-0AD4-4B0A-A733-0A56C6582776}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{AC417798-179B-44AE-A12D-19FD79720921}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VK_Users.UserService", "Services\VK_Users.UserService\VK_Users.UserService.csproj", "{120E83D8-A501-4FEF-8EE2-75DFE7194EF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{AC417798-179B-44AE-A12D-19FD79720921}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC417798-179B-44AE-A12D-19FD79720921}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC417798-179B-44AE-A12D-19FD79720921}.Release|Any CPU.Build.0 = Release|Any CPU
+		{120E83D8-A501-4FEF-8EE2-75DFE7194EF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{120E83D8-A501-4FEF-8EE2-75DFE7194EF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{120E83D8-A501-4FEF-8EE2-75DFE7194EF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{120E83D8-A501-4FEF-8EE2-75DFE7194EF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,6 +71,7 @@ Global
 		{76F4B015-F63A-4E88-9A84-D3A095749B40} = {B28582A2-0E14-4708-A252-EE7162AB498E}
 		{AE162C11-D495-46F0-825B-06A65B68F7D1} = {9E82A39C-9A67-4B03-BFC2-6FC219C72A83}
 		{2940B2E4-0AD4-4B0A-A733-0A56C6582776} = {7B2E03DF-E5C5-4397-8558-0ABDB202473B}
+		{120E83D8-A501-4FEF-8EE2-75DFE7194EF0} = {5080C462-37B2-4D7C-850D-7199ACF2015D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1A6B02E5-CC39-42E4-9B4D-12D70AD6C870}
