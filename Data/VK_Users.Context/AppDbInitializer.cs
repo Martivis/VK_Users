@@ -12,13 +12,14 @@ public static class AppDbInitializer
     public static void Execute(IServiceProvider serviceProvider)
     {
         using var scope = serviceProvider.GetService<IServiceScopeFactory>()!.CreateScope();
+        var contextFactory = scope.ServiceProvider.GetRequiredService<IDbContextFactory<AppDbContext>>();
 
         int retries = 0;
         while (retries < MaxRetries)
         {
             try
             {
-                using var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+                using var context = contextFactory.CreateDbContext();
 
                 context.Database.Migrate();
                 return;

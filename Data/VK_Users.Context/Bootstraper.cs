@@ -9,7 +9,7 @@ public static class Bootstraper
     {
         var setting = SettingsLoader.Load<AppDbSettings>("Database");
 
-        services.AddDbContext<AppDbContext>(OptionsFactory.Configure(setting.ConnectionString));
+        services.AddDbContextFactory<AppDbContext>(OptionsFactory.Configure(setting.ConnectionString));
         return services;
     }
 }

@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\VK_Users.Context\VK_Users.Context.csproj" />
+  </ItemGroup>
+
 </Project>

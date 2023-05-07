@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Shared\VK_Users.Settings\VK_Users.Settings.csproj" />
-    <ProjectReference Include="..\VK_Users.Context.Migrations\VK_Users.Context.Migrations.csproj" />
+    <ProjectReference Include="..\VK_Users.Context.Entities\VK_Users.Context.Entities.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  vk_users.postgres:
+    ports:
+      - "5432:5432"
+    volumes:
+      - ~/.docker-conf/mssql/data/:/var/lib/mssql/data
+    env_file:
+      - env.postgres
+    extra_hosts:
+      - host.docker.internal:host-gateway
+
+  vk_users.api:
+    env_file:
+      - env.api
+    ports:
+      - "10000:80"
+    extra_hosts:
+      - host.docker.internal:host-gateway

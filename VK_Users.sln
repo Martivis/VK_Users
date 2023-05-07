@@ -11,17 +11,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{9E82A39C-9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{B28582A2-0E14-4708-A252-EE7162AB498E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VK_Users.Api", "Systems\VK_Users\VK_Users.Api.csproj", "{CF77442C-9AB1-4B8E-A6EC-054A4EA20016}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{960488FB-2A12-4EB7-8035-694F5270DF74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VK_Users.Context", "Data\VK_Users.Context\VK_Users.Context.csproj", "{AFE5F730-F725-41BF-A8BE-4D6780027CB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VK_Users.Context", "Data\VK_Users.Context\VK_Users.Context.csproj", "{AFE5F730-F725-41BF-A8BE-4D6780027CB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VK_Users.Context.Migrations", "Data\VK_Users.Context.Migrations\VK_Users.Context.Migrations.csproj", "{FE5044E3-9631-4191-97A9-A0857D74B041}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VK_Users.Context.Migrations", "Data\VK_Users.Context.Migrations\VK_Users.Context.Migrations.csproj", "{FE5044E3-9631-4191-97A9-A0857D74B041}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VK_Users.Settings", "Shared\VK_Users.Settings\VK_Users.Settings.csproj", "{76F4B015-F63A-4E88-9A84-D3A095749B40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VK_Users.Settings", "Shared\VK_Users.Settings\VK_Users.Settings.csproj", "{76F4B015-F63A-4E88-9A84-D3A095749B40}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VK_Users.Context.Entities", "Data\VK_Users.Context.Entities\VK_Users.Context.Entities.csproj", "{AE162C11-D495-46F0-825B-06A65B68F7D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VK_Users.Api", "Systems\VK_Users.Api\VK_Users.Api.csproj", "{2940B2E4-0AD4-4B0A-A733-0A56C6582776}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{AC417798-179B-44AE-A12D-19FD79720921}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +31,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CF77442C-9AB1-4B8E-A6EC-054A4EA20016}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CF77442C-9AB1-4B8E-A6EC-054A4EA20016}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CF77442C-9AB1-4B8E-A6EC-054A4EA20016}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CF77442C-9AB1-4B8E-A6EC-054A4EA20016}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AFE5F730-F725-41BF-A8BE-4D6780027CB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AFE5F730-F725-41BF-A8BE-4D6780027CB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFE5F730-F725-41BF-A8BE-4D6780027CB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -49,16 +47,24 @@ Global
 		{AE162C11-D495-46F0-825B-06A65B68F7D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE162C11-D495-46F0-825B-06A65B68F7D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE162C11-D495-46F0-825B-06A65B68F7D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2940B2E4-0AD4-4B0A-A733-0A56C6582776}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2940B2E4-0AD4-4B0A-A733-0A56C6582776}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2940B2E4-0AD4-4B0A-A733-0A56C6582776}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2940B2E4-0AD4-4B0A-A733-0A56C6582776}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC417798-179B-44AE-A12D-19FD79720921}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC417798-179B-44AE-A12D-19FD79720921}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC417798-179B-44AE-A12D-19FD79720921}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC417798-179B-44AE-A12D-19FD79720921}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{CF77442C-9AB1-4B8E-A6EC-054A4EA20016} = {7B2E03DF-E5C5-4397-8558-0ABDB202473B}
 		{AFE5F730-F725-41BF-A8BE-4D6780027CB5} = {9E82A39C-9A67-4B03-BFC2-6FC219C72A83}
 		{FE5044E3-9631-4191-97A9-A0857D74B041} = {9E82A39C-9A67-4B03-BFC2-6FC219C72A83}
 		{76F4B015-F63A-4E88-9A84-D3A095749B40} = {B28582A2-0E14-4708-A252-EE7162AB498E}
 		{AE162C11-D495-46F0-825B-06A65B68F7D1} = {9E82A39C-9A67-4B03-BFC2-6FC219C72A83}
+		{2940B2E4-0AD4-4B0A-A733-0A56C6582776} = {7B2E03DF-E5C5-4397-8558-0ABDB202473B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1A6B02E5-CC39-42E4-9B4D-12D70AD6C870}
