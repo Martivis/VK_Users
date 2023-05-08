@@ -1,8 +1,9 @@
 ﻿
 namespace VK_Users.Context.Entities;
 
-public class User : EntityBase
+public class User
 {
+    public Guid Uid { get; set; }
     public string Login { get; set; } = null!;
     public string PasswordHash { get; set; } = null!;
     public DateOnly CreatedDate { get; set; }
