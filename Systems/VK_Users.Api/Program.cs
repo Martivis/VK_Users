@@ -1,5 +1,6 @@
 using VK_Users.Api;
 using VK_Users.Context;
+using VK_Users.UserService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,9 @@ services.AddSwaggerGen();
 
 services.AddAppAutoMapper();
 services.AddAppDbContext();
+
+services.AddUserService();
+
 
 var app = builder.Build();
 
@@ -25,5 +29,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 AppDbInitializer.Execute(app.Services);
+AppDbSeeder.Seed(app.Services);
 
 app.Run();
