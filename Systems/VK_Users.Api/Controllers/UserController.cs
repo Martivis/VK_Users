@@ -36,7 +36,7 @@ public class UserController : ControllerBase
 
 
     [HttpPut("{uid}")]
-    public async void Delete(Guid uid)
+    public async Task Delete(Guid uid)
     {
         await _userService.DeleteUser(uid);
     }

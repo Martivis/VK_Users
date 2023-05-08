@@ -26,7 +26,8 @@ internal static class OptionsFactory
                     .MigrationsHistoryTable(tableName: "_EFMigrationHistory", schema: "vk_users")
                     .MigrationsAssembly("VK_Users.Context.Migrations");
             })
-            .EnableSensitiveDataLogging();
+            .EnableSensitiveDataLogging()
+            .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
         };
     }
 }
