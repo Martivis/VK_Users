@@ -1,3 +1,4 @@
+using VK_Users.Api;
 using VK_Users.Context;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,7 @@ services.AddControllers();
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 
+services.AddAppAutoMapper();
 services.AddAppDbContext();
 
 var app = builder.Build();
