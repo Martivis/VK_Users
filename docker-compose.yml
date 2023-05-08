@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  vk_users.postgres:
+    image: postgres:latest
+
+  vk_users.api:
+    image: ${DOCKER_REGISTRY-}vkusersapi
+    build:
+      context: .
+      dockerfile: Systems/VK_Users.Api/Dockerfile
+    depends_on:
+      - vk_users.postgres
