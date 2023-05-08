@@ -12,7 +12,7 @@ using VK_Users.Context;
 namespace VK_Users.Context.Migrations.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230507174455_Init")]
+    [Migration("20230508154404_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -46,29 +46,34 @@ namespace VK_Users.Context.Migrations.Migrations
                         .HasColumnType("text")
                         .HasColumnName("password_hash");
 
-                    b.Property<Guid>("UserGroupUid")
-                        .HasColumnType("uuid")
-                        .HasColumnName("user_group_uid");
+                    b.Property<int>("UserGroupId")
+                        .HasColumnType("integer")
+                        .HasColumnName("user_group_id");
 
-                    b.Property<Guid>("UserStateUid")
-                        .HasColumnType("uuid")
-                        .HasColumnName("user_state_uid");
+                    b.Property<int>("UserStateId")
+                        .HasColumnType("integer")
+                        .HasColumnName("user_state_id");
 
                     b.HasKey("Uid");
 
-                    b.HasIndex("UserGroupUid");
+                    b.HasIndex("Login")
+                        .IsUnique();
 
-                    b.HasIndex("UserStateUid");
+                    b.HasIndex("UserGroupId");
+
+                    b.HasIndex("UserStateId");
 
                     b.ToTable("users", (string)null);
                 });
 
             modelBuilder.Entity("VK_Users.Context.Entities.UserGroup", b =>
                 {
-                    b.Property<Guid>("Uid")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("uid");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Code")
                         .HasColumnType("integer")
@@ -79,17 +84,19 @@ namespace VK_Users.Context.Migrations.Migrations
                         .HasColumnType("text")
                         .HasColumnName("description");
 
-                    b.HasKey("Uid");
+                    b.HasKey("Id");
 
                     b.ToTable("user_groups", (string)null);
                 });
 
             modelBuilder.Entity("VK_Users.Context.Entities.UserState", b =>
                 {
-                    b.Property<Guid>("Uid")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("uid");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Code")
                         .HasColumnType("integer")
@@ -100,7 +107,7 @@ namespace VK_Users.Context.Migrations.Migrations
                         .HasColumnType("text")
                         .HasColumnName("description");
 
-                    b.HasKey("Uid");
+                    b.HasKey("Id");
 
                     b.ToTable("user_states", (string)null);
                 });
@@ -109,13 +116,13 @@ namespace VK_Users.Context.Migrations.Migrations
                 {
                     b.HasOne("VK_Users.Context.Entities.UserGroup", "UserGroup")
                         .WithMany("Users")
-                        .HasForeignKey("UserGroupUid")
+                        .HasForeignKey("UserGroupId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("VK_Users.Context.Entities.UserState", "UserState")
                         .WithMany("Users")
-                        .HasForeignKey("UserStateUid")
+                        .HasForeignKey("UserStateId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

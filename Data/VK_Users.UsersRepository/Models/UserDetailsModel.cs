@@ -1,7 +1,7 @@
 ﻿
 using VK_Users.Context.Entities;
 
-namespace VK_Users.UserService;
+namespace VK_Users.UsersRepository;
 
 public class UserDetailsModel
 {

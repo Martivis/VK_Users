@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -15,26 +16,28 @@ namespace VK_Users.Context.Migrations.Migrations
                 name: "user_groups",
                 columns: table => new
                 {
-                    uid = table.Column<Guid>(type: "uuid", nullable: false),
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     code = table.Column<int>(type: "integer", nullable: false),
                     description = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_user_groups", x => x.uid);
+                    table.PrimaryKey("PK_user_groups", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "user_states",
                 columns: table => new
                 {
-                    uid = table.Column<Guid>(type: "uuid", nullable: false),
+                    id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     code = table.Column<int>(type: "integer", nullable: false),
                     description = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_user_states", x => x.uid);
+                    table.PrimaryKey("PK_user_states", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -45,35 +48,41 @@ namespace VK_Users.Context.Migrations.Migrations
                     login = table.Column<string>(type: "text", nullable: false),
                     password_hash = table.Column<string>(type: "text", nullable: false),
                     created_date = table.Column<DateOnly>(type: "date", nullable: false),
-                    user_group_uid = table.Column<Guid>(type: "uuid", nullable: false),
-                    user_state_uid = table.Column<Guid>(type: "uuid", nullable: false)
+                    user_group_id = table.Column<int>(type: "integer", nullable: false),
+                    user_state_id = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_users", x => x.uid);
                     table.ForeignKey(
-                        name: "FK_users_user_groups_user_group_uid",
-                        column: x => x.user_group_uid,
+                        name: "FK_users_user_groups_user_group_id",
+                        column: x => x.user_group_id,
                         principalTable: "user_groups",
-                        principalColumn: "uid",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_users_user_states_user_state_uid",
-                        column: x => x.user_state_uid,
+                        name: "FK_users_user_states_user_state_id",
+                        column: x => x.user_state_id,
                         principalTable: "user_states",
-                        principalColumn: "uid",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_users_user_group_uid",
+                name: "IX_users_login",
                 table: "users",
-                column: "user_group_uid");
+                column: "login",
+                unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_users_user_state_uid",
+                name: "IX_users_user_group_id",
                 table: "users",
-                column: "user_state_uid");
+                column: "user_group_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_users_user_state_id",
+                table: "users",
+                column: "user_state_id");
         }
 
         /// <inheritdoc />

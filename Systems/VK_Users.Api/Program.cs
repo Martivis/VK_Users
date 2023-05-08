@@ -1,6 +1,7 @@
 using VK_Users.Api;
 using VK_Users.Context;
 using VK_Users.UserService;
+using VK_Users.UsersRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,7 @@ services.AddSwaggerGen();
 services.AddAppAutoMapper();
 services.AddAppDbContext();
 
+services.AddUserRepository();
 services.AddUserService();
 
 

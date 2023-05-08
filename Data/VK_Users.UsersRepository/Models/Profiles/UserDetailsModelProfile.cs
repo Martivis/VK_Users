@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VK_Users.Context.Entities;
 
-namespace VK_Users.UserService.Models.Profiles;
+namespace VK_Users.UsersRepository.Models.Profiles;
 
 public class UserDetailsModelProfile : Profile
 {

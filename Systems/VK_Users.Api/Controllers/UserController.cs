@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
 using VK_Users.UserService;
+using VK_Users.UsersRepository;
 
 namespace VK_Users.Api.Controllers;
 
@@ -28,7 +29,7 @@ public class UserController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<UserDetailsModel> Add([FromBody] AddUserModel model)
+    public async Task<UserDetailsModel> Add([FromBody] AddUserRequest model)
     {
         return await _userService.AddUser(model);
     }

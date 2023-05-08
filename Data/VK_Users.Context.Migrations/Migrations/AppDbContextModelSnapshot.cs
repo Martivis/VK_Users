@@ -44,20 +44,17 @@ namespace VK_Users.Context.Migrations.Migrations
                         .HasColumnName("password_hash");
 
                     b.Property<int>("UserGroupId")
-                        .HasColumnType("integer");
-
-                    b.Property<Guid>("UserGroupUid")
-                        .HasColumnType("uuid")
-                        .HasColumnName("user_group_uid");
+                        .HasColumnType("integer")
+                        .HasColumnName("user_group_id");
 
                     b.Property<int>("UserStateId")
-                        .HasColumnType("integer");
-
-                    b.Property<Guid>("UserStateUid")
-                        .HasColumnType("uuid")
-                        .HasColumnName("user_state_uid");
+                        .HasColumnType("integer")
+                        .HasColumnName("user_state_id");
 
                     b.HasKey("Uid");
+
+                    b.HasIndex("Login")
+                        .IsUnique();
 
                     b.HasIndex("UserGroupId");
 

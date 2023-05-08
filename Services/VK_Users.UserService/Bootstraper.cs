@@ -13,8 +13,7 @@ public static class Bootstraper
 {
     public static IServiceCollection AddUserService(this IServiceCollection services)
     {
-        services.AddSingleton<IUserService, UserService>();
-        services.AddSingleton<IPasswordHasher<User>, PasswordHasher<User>>();
+        services.AddScoped<IUserService, UserService>();
         return services;
     }
 }

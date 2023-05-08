@@ -7,8 +7,8 @@ public class User
     public string Login { get; set; } = null!;
     public string PasswordHash { get; set; } = null!;
     public DateOnly CreatedDate { get; set; }
-    public Guid UserGroupUid { get; set; }
+    public int UserGroupId { get; set; }
     public virtual UserGroup UserGroup { get; set; } = null!;
-    public Guid UserStateUid { get; set; }
+    public int UserStateId { get; set; }
     public virtual UserState UserState { get; set; } = null!;
 }
