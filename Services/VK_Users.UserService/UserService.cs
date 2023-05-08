@@ -12,17 +12,18 @@ internal class UserService : IUserService
     private readonly IDbContextFactory<AppDbContext> _contextFactory;
     private readonly IMapper _mapper;
     private readonly IPasswordHasher<User> _passwordHasher;
-    public UserService(IDbContextFactory<AppDbContext> contextFactory, IMapper mapper)
+    public UserService(IDbContextFactory<AppDbContext> contextFactory, IMapper mapper, IPasswordHasher<User> passwordHasher)
     {
         _contextFactory = contextFactory;
         _mapper = mapper;
+        _passwordHasher = passwordHasher;
     }
 
     public async Task<UserDetailsModel> AddUser(AddUserModel model)
     {
         using var context = await _contextFactory.CreateDbContextAsync();
 
-        if (await context.Set<User>().FirstAsync(e => e.Login == model.Login) is not null)
+        if (await context.Set<User>().FirstOrDefaultAsync(e => e.Login == model.Login) is not null)
         {
             throw new ApplicationException($"User with login {model.Login} already exists");
         }
@@ -40,6 +41,7 @@ internal class UserService : IUserService
         user.PasswordHash = _passwordHasher.HashPassword(user, model.Password);
 
         await context.AddAsync(user);
+        await context.SaveChangesAsync();
 
         return _mapper.Map<UserDetailsModel>(user);
     }
