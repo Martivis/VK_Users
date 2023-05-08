@@ -61,6 +61,8 @@ internal class UserRepository : IUserRepository, IDisposable
         var users = await _context.Set<User>()
             .Include(e => e.UserGroup)
             .Include(e => e.UserState)
+            .OrderByDescending(e => e.CreatedDate)
+            .OrderBy(e => e.Login)
             .Skip(page * pageSize).Take(pageSize)
             .ToListAsync();
 
