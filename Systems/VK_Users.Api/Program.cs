@@ -1,4 +1,5 @@
 using VK_Users.Api;
+using VK_Users.CacheService;
 using VK_Users.Context;
 using VK_Users.UserService;
 using VK_Users.UsersRepository;
@@ -14,6 +15,7 @@ services.AddSwaggerGen();
 services.AddAppAutoMapper();
 services.AddAppDbContext();
 
+services.AddCacheService();
 services.AddUserRepository();
 services.AddUserService();
 

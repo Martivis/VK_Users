@@ -1,5 +1,6 @@
 ﻿
 using AutoMapper;
+using VK_Users.CacheService;
 using VK_Users.Context.Entities;
 using VK_Users.UsersRepository;
 
@@ -9,11 +10,12 @@ internal class UserService : IUserService
 {
     private readonly IUserRepository _userRepository;
     private readonly IMapper _mapper;
-
-    public UserService(IUserRepository userRepository, IMapper mapper)
+    private readonly ICacheService _cache;
+    public UserService(IUserRepository userRepository, IMapper mapper, ICacheService cache)
     {
         _userRepository = userRepository;
         _mapper = mapper;
+        _cache = cache;
     }
 
     public async Task<UserDetailsModel> AddUser(AddUserRequest model)
@@ -22,9 +24,21 @@ internal class UserService : IUserService
         addUserModel.UserStateId = UserStateId.Active;
         addUserModel.CreatedDate = DateOnly.FromDateTime(DateTime.UtcNow);
 
-        var user = await _userRepository.AddUser(addUserModel);
-
-        return _mapper.Map<UserDetailsModel>(user);
+        if (!await _cache.TryPutAsync(model.Login))
+        {
+            throw new ApplicationException($"User with login {model.Login} already exists ::pending::");
+        }
+        await Task.Delay(5000); // Simulation of external service work
+        
+        try
+        {
+            var user = await _userRepository.AddUser(addUserModel);
+            return _mapper.Map<UserDetailsModel>(user);
+        }
+        finally
+        {
+            await _cache.TakeAsync(model.Login);
+        }
     }
 
     public async Task DeleteUser(Guid uid)
