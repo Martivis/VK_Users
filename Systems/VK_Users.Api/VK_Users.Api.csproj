@@ -28,6 +28,7 @@
     <ProjectReference Include="..\..\Data\VK_Users.Context\VK_Users.Context.csproj" />
     <ProjectReference Include="..\..\Services\VK_Users.CacheService\VK_Users.CacheService.csproj" />
     <ProjectReference Include="..\..\Services\VK_Users.UserService\VK_Users.UserService.csproj" />
+    <ProjectReference Include="..\..\Shared\VK_Users.Common\VK_Users.Common.csproj" />
   </ItemGroup>
 
 </Project>

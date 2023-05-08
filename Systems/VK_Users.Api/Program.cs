@@ -32,6 +32,8 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.UseAppMiddlewares();
+
 AppDbInitializer.Execute(app.Services);
 AppDbSeeder.Seed(app.Services);
 
