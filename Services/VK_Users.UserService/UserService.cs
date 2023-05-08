@@ -1,8 +1,5 @@
 ﻿
 using AutoMapper;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using VK_Users.Context;
 using VK_Users.Context.Entities;
 using VK_Users.UsersRepository;
 
@@ -22,7 +19,7 @@ internal class UserService : IUserService
     public async Task<UserDetailsModel> AddUser(AddUserRequest model)
     {
         var addUserModel = _mapper.Map<AddUserModel>(model);
-        addUserModel.UserStateCode = UserStateCode.Active;
+        addUserModel.UserStateId = UserStateId.Active;
         addUserModel.CreatedDate = DateOnly.FromDateTime(DateTime.UtcNow);
 
         var user = await _userRepository.AddUser(addUserModel);

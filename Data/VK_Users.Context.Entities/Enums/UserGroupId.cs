@@ -1,7 +1,7 @@
 ﻿
 namespace VK_Users.Context.Entities;
 
-public enum UserGroupCode
+public enum UserGroupId
 {
     User,
     Admin

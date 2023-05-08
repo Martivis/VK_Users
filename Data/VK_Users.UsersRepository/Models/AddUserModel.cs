@@ -8,7 +8,7 @@ public class AddUserModel
     public string Login { get; init; }
     public string Password { get; set; }
     public DateOnly CreatedDate { get; set; }
-    public UserGroupCode UserGroupCode { get; set; }
-    public UserStateCode UserStateCode { get; set; }
+    public UserGroupId UserGroupId { get; set; }
+    public UserStateId UserStateId { get; set; }
 
 }

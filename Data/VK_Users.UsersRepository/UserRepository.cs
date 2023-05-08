@@ -22,14 +22,17 @@ internal class UserRepository : IUserRepository, IDisposable
 
     public async Task<UserDetailsModel> AddUser(AddUserModel model)
     {
-        var state = await _context.Set<UserState>().FirstAsync(e => e.Code == model.UserStateCode)
-            ?? throw new ApplicationException($"State {model.UserStateCode} not found");
-        var group = await _context.Set<UserGroup>().FirstAsync(e => e.Code == model.UserGroupCode)
-            ?? throw new ApplicationException($"State {model.UserGroupCode} not found");
+        if (await _context.Set<User>().AnyAsync(e => e.Login == model.Login))
+        {
+            throw new ApplicationException($"User with login {model.Login} already exists");
+        }
+        if (model.UserGroupId == UserGroupId.Admin &&
+            await _context.Set<User>().AnyAsync(e => e.UserGroupId == UserGroupId.Admin))
+        {
+            throw new ApplicationException($"Administrator already exists");
+        }
 
         var user = _mapper.Map<User>(model);
-        user.UserGroup = group;
-        user.UserState = state;
         user.PasswordHash = _passwordHasher.HashPassword(user, model.Password);
 
         await _context.AddAsync(user);

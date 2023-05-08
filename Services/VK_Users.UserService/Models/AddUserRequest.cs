@@ -11,5 +11,5 @@ public class AddUserRequest
 {
     public string Login { get; init; }
     public string Password { get; set; }
-    public UserGroupCode UserGroupCode { get; init; }
+    public UserGroupId UserGroupId { get; init; }
 }

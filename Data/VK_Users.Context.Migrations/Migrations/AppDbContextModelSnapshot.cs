@@ -66,14 +66,12 @@ namespace VK_Users.Context.Migrations.Migrations
             modelBuilder.Entity("VK_Users.Context.Entities.UserGroup", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Code")
-                        .HasColumnType("integer")
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("text")
                         .HasColumnName("code");
 
                     b.Property<string>("Description")
@@ -89,14 +87,12 @@ namespace VK_Users.Context.Migrations.Migrations
             modelBuilder.Entity("VK_Users.Context.Entities.UserState", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
                         .HasColumnName("id");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("Code")
-                        .HasColumnType("integer")
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("text")
                         .HasColumnName("code");
 
                     b.Property<string>("Description")

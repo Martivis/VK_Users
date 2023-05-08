@@ -23,16 +23,21 @@ public static class AppDbSeeder
 
     private static void AddStates(AppDbContext context)
     {
+        if (context.Set<UserState>().Any())
+            return;
+
         var states = new List<UserState>
         {
             new UserState
             {
-                Code = UserStateCode.Active,
+                Id = UserStateId.Active,
+                Code = "Active",
                 Description = "Active application user",
             },
             new UserState
             {
-                Code = UserStateCode.Blocked,
+                Id = UserStateId.Blocked,
+                Code = "Blocked",
                 Description = "Banned or deleted user",
             },
         };
@@ -42,16 +47,21 @@ public static class AppDbSeeder
 
     private static void AddGroups(AppDbContext context)
     {
+        if (context.Set<UserGroup>().Any())
+            return;
+
         var groups = new List<UserGroup>
         {
             new UserGroup
             {
-                Code = UserGroupCode.User,
+                Id = UserGroupId.User,
+                Code = "User",
                 Description = "Common user",
             },
             new UserGroup
             {
-                Code = UserGroupCode.Admin,
+                Id = UserGroupId.Admin,
+                Code = "Admin",
                 Description = "Application administrator",
             },
         };
