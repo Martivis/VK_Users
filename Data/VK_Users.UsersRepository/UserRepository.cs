@@ -32,12 +32,19 @@ internal class UserRepository : IUserRepository, IDisposable
             throw new ApplicationException($"Administrator already exists");
         }
 
+        var group = await _context.Set<UserGroup>().FindAsync(model.UserGroupId)
+            ?? throw new Exception($"Group {model.UserGroupId} not found");
+        var state = await _context.Set<UserState>().FindAsync(model.UserStateId)
+            ?? throw new Exception($"State {model.UserGroupId} not found");
+
         var user = _mapper.Map<User>(model);
         user.PasswordHash = _passwordHasher.HashPassword(user, model.Password);
 
         await _context.AddAsync(user);
         await _context.SaveChangesAsync();
 
+        user.UserGroup = group;
+        user.UserState = state;
         return _mapper.Map<UserDetailsModel>(user);
     }
 
