@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Data\VK_Users.UsersRepository\VK_Users.UsersRepository.csproj" />
+    <ProjectReference Include="..\..\Shared\VK_Users.Common\VK_Users.Common.csproj" />
     <ProjectReference Include="..\VK_Users.CacheService\VK_Users.CacheService.csproj" />
   </ItemGroup>
 

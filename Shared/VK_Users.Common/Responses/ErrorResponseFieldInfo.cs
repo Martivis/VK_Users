@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace VK_Users.Common;
 
-public class ErrorResponse
+public class ErrorResponseFieldInfo
 {
-    public int ErrorCode { get; set; }
+    public string FieldName { get; set; }
     public string Message { get; set; }
-    public IEnumerable<ErrorResponseFieldInfo> FieldErrors { get; set; }
 }
