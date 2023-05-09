@@ -27,15 +27,17 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VK_Users.UserService", "Services\VK_Users.UserService\VK_Users.UserService.csproj", "{120E83D8-A501-4FEF-8EE2-75DFE7194EF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VK_Users.UsersRepository", "Data\VK_Users.UsersRepository\VK_Users.UsersRepository.csproj", "{9B85F285-205C-41C2-986C-4274AB060D4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VK_Users.UsersRepository", "Data\VK_Users.UsersRepository\VK_Users.UsersRepository.csproj", "{9B85F285-205C-41C2-986C-4274AB060D4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VK_Users.CacheService", "Services\VK_Users.CacheService\VK_Users.CacheService.csproj", "{267E8B64-6FE6-4A7B-AC63-CFFE33989D83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VK_Users.CacheService", "Services\VK_Users.CacheService\VK_Users.CacheService.csproj", "{267E8B64-6FE6-4A7B-AC63-CFFE33989D83}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VK_Users.Common", "Shared\VK_Users.Common\VK_Users.Common.csproj", "{2EDC3153-ABE0-4862-9D21-8C137F807501}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VK_Users.Common", "Shared\VK_Users.Common\VK_Users.Common.csproj", "{2EDC3153-ABE0-4862-9D21-8C137F807501}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VK_Users.CacheServiceTest", "Tests\VK_Users.CacheServiceTest\VK_Users.CacheServiceTest.csproj", "{CFF4ACDF-DDA8-48CA-A341-1B7C3FF5361A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VK_Users.CacheServiceTest", "Tests\VK_Users.CacheServiceTest\VK_Users.CacheServiceTest.csproj", "{CFF4ACDF-DDA8-48CA-A341-1B7C3FF5361A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Common", "Tests\Tests.Common\Tests.Common.csproj", "{B409CD40-77D9-42EB-A626-D31EBDE152FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Common", "Tests\Tests.Common\Tests.Common.csproj", "{B409CD40-77D9-42EB-A626-D31EBDE152FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VK_Users.AuthService", "Services\VK_Users.AuthService\VK_Users.AuthService.csproj", "{4DDC08D3-B9B1-4655-9046-3F4B36DD6256}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,6 +93,10 @@ Global
 		{B409CD40-77D9-42EB-A626-D31EBDE152FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B409CD40-77D9-42EB-A626-D31EBDE152FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B409CD40-77D9-42EB-A626-D31EBDE152FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4DDC08D3-B9B1-4655-9046-3F4B36DD6256}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4DDC08D3-B9B1-4655-9046-3F4B36DD6256}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4DDC08D3-B9B1-4655-9046-3F4B36DD6256}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4DDC08D3-B9B1-4655-9046-3F4B36DD6256}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -107,6 +113,7 @@ Global
 		{2EDC3153-ABE0-4862-9D21-8C137F807501} = {B28582A2-0E14-4708-A252-EE7162AB498E}
 		{CFF4ACDF-DDA8-48CA-A341-1B7C3FF5361A} = {960488FB-2A12-4EB7-8035-694F5270DF74}
 		{B409CD40-77D9-42EB-A626-D31EBDE152FF} = {960488FB-2A12-4EB7-8035-694F5270DF74}
+		{4DDC08D3-B9B1-4655-9046-3F4B36DD6256} = {5080C462-37B2-4D7C-850D-7199ACF2015D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1A6B02E5-CC39-42E4-9B4D-12D70AD6C870}

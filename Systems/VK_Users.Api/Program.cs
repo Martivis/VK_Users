@@ -1,4 +1,5 @@
 using VK_Users.Api;
+using VK_Users.AuthService;
 using VK_Users.CacheService;
 using VK_Users.Context;
 using VK_Users.UserService;
@@ -18,7 +19,9 @@ services.AddAppDbContext();
 services.AddCacheService();
 services.AddUserRepository();
 services.AddUserService();
+services.AddAuthService();
 
+services.AddAppAuth();
 
 var app = builder.Build();
 
