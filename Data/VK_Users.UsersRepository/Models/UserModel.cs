@@ -1,4 +1,6 @@
 ﻿
+using VK_Users.Context.Entities;
+
 namespace VK_Users.UsersRepository;
 
 public class UserModel
@@ -7,6 +9,6 @@ public class UserModel
     public string Login { get; init; }
     public string PasswordHash { get; set; }
     public DateOnly CreatedDate { get; init; }
-    public int UserGroupId { get; set; }
-    public int UserStateId { get; set; }
+    public UserGroupId UserGroupId { get; set; }
+    public UserStateId UserStateId { get; set; }
 }

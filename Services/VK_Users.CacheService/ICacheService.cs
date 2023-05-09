@@ -2,6 +2,6 @@
 
 public interface ICacheService
 {
-    Task<bool> TryPutAsync(string value);
-    Task TakeAsync(string value);
+    Task<bool> TryPutAsync(string key);
+    Task TakeAsync(string key);
 }

@@ -10,6 +10,8 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.9" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5">
       <PrivateAssets>all</PrivateAssets>
@@ -26,8 +28,10 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\VK_Users.Context.Migrations\VK_Users.Context.Migrations.csproj" />
     <ProjectReference Include="..\..\Data\VK_Users.Context\VK_Users.Context.csproj" />
+    <ProjectReference Include="..\..\Services\VK_Users.AuthService\VK_Users.AuthService.csproj" />
     <ProjectReference Include="..\..\Services\VK_Users.CacheService\VK_Users.CacheService.csproj" />
     <ProjectReference Include="..\..\Services\VK_Users.UserService\VK_Users.UserService.csproj" />
+    <ProjectReference Include="..\..\Shared\VK_Users.Common\VK_Users.Common.csproj" />
   </ItemGroup>
 
 </Project>

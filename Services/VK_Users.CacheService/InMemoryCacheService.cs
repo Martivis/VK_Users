@@ -5,28 +5,20 @@ namespace VK_Users.CacheService;
 
 internal class InMemoryCacheService : ICacheService
 {
-    private readonly ConcurrentBag<string> _cache;
+    private readonly ConcurrentDictionary<string, bool> _cache;
 
     public InMemoryCacheService()
     {
-        _cache = new ConcurrentBag<string>();    
+        _cache = new ConcurrentDictionary<string, bool>();    
     }
 
-    public async Task<bool> TryPutAsync(string value)
+    public async Task<bool> TryPutAsync(string key)
     {
-        return await Task.Run(() => 
-        {
-            if (_cache.Any(i => i == value))
-            {
-                return false;
-            }
-            _cache.Add(value);
-            return true;
-        });
+        return await Task.Run(() => _cache.TryAdd(key, true));
     }
 
-    public async Task TakeAsync(string value)
+    public async Task TakeAsync(string key)
     {
-        await Task.Run(() => _cache.TryTake(out value!));
+        await Task.Run(() => _cache.TryRemove(KeyValuePair.Create(key, true)));
     }
 }

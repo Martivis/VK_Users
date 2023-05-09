@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VK_Users.UserService;
 using VK_Users.UsersRepository;
@@ -17,11 +18,12 @@ public class UserController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IEnumerable<UserDetailsModel>> GetAll(int page = 0, int pageSize = 10)
+    public async Task<IEnumerable<UserDetailsModel>> GetAll([FromQuery] PaginationModel pagination)
     {
-        return await _userService.GetAllUsers(page, pageSize);
+        return await _userService.GetAllUsers(pagination);
     }
 
+    [Authorize]
     [HttpGet("{uid}")]
     public async Task<UserDetailsModel> Get(Guid uid)
     {
@@ -33,7 +35,6 @@ public class UserController : ControllerBase
     {
         return await _userService.AddUser(model);
     }
-
 
     [HttpPut("{uid}")]
     public async Task Delete(Guid uid)

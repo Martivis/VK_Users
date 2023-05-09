@@ -62,7 +62,7 @@ internal class UserRepository : IUserRepository, IDisposable
             .Include(e => e.UserGroup)
             .Include(e => e.UserState)
             .OrderByDescending(e => e.CreatedDate)
-            .OrderBy(e => e.Login)
+            .ThenBy(e => e.Login)
             .Skip(page * pageSize).Take(pageSize)
             .ToListAsync();
 
@@ -77,6 +77,14 @@ internal class UserRepository : IUserRepository, IDisposable
             .FirstAsync(e => e.Uid == uid);
 
         return _mapper.Map<UserDetailsModel>(users);
+    }
+
+    public async Task<UserModel> GetUserByLogin(string login)
+    {
+        var user = await _context.Set<User>().FirstOrDefaultAsync(e => e.Login == login)
+            ?? throw new ApplicationException($"User with login {login} not found");
+
+        return _mapper.Map<UserModel>(user);
     }
 
     public async Task UpdateUser(UserModel userModel)

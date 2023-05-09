@@ -11,11 +11,14 @@ internal class UserService : IUserService
     private readonly IUserRepository _userRepository;
     private readonly IMapper _mapper;
     private readonly ICacheService _cache;
-    public UserService(IUserRepository userRepository, IMapper mapper, ICacheService cache)
+    private readonly IWorker _worker;
+
+    public UserService(IUserRepository userRepository, IMapper mapper, ICacheService cache, IWorker worker)
     {
         _userRepository = userRepository;
         _mapper = mapper;
         _cache = cache;
+        _worker = worker;
     }
 
     public async Task<UserDetailsModel> AddUser(AddUserRequest model)
@@ -28,12 +31,12 @@ internal class UserService : IUserService
         {
             throw new ApplicationException($"User with login {model.Login} already exists ::pending::");
         }
-        await Task.Delay(5000); // Simulation of external service work
+
+        await _worker.DoWork();
         
         try
         {
-            var user = await _userRepository.AddUser(addUserModel);
-            return _mapper.Map<UserDetailsModel>(user);
+            return await _userRepository.AddUser(addUserModel);
         }
         finally
         {
@@ -44,14 +47,14 @@ internal class UserService : IUserService
     public async Task DeleteUser(Guid uid)
     {
         var user = await _userRepository.GetUserByUid(uid);
-        user.UserStateId = 1;
+        user.UserStateId = UserStateId.Blocked;
 
         await _userRepository.UpdateUser(user);
     }
 
-    public async Task<IEnumerable<UserDetailsModel>> GetAllUsers(int page = 0, int pageSize = 10)
+    public async Task<IEnumerable<UserDetailsModel>> GetAllUsers(PaginationModel pagination)
     {
-        return await _userRepository.GetAllUsersDetails(page, pageSize);
+        return await _userRepository.GetAllUsersDetails(pagination.Page, pagination.PageSize);
     }
 
     public async Task<UserDetailsModel> GetUser(Guid uid)
