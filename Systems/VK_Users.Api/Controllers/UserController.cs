@@ -18,9 +18,9 @@ public class UserController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IEnumerable<UserDetailsModel>> GetAll(int page = 0, int pageSize = 10)
+    public async Task<IEnumerable<UserDetailsModel>> GetAll([FromQuery] PaginationModel pagination)
     {
-        return await _userService.GetAllUsers(page, pageSize);
+        return await _userService.GetAllUsers(pagination);
     }
 
     [Authorize]

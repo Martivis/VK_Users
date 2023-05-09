@@ -49,9 +49,9 @@ internal class UserService : IUserService
         await _userRepository.UpdateUser(user);
     }
 
-    public async Task<IEnumerable<UserDetailsModel>> GetAllUsers(int page = 0, int pageSize = 10)
+    public async Task<IEnumerable<UserDetailsModel>> GetAllUsers(PaginationModel pagination)
     {
-        return await _userRepository.GetAllUsersDetails(page, pageSize);
+        return await _userRepository.GetAllUsersDetails(pagination.Page, pagination.PageSize);
     }
 
     public async Task<UserDetailsModel> GetUser(Guid uid)
