@@ -11,11 +11,14 @@ internal class UserService : IUserService
     private readonly IUserRepository _userRepository;
     private readonly IMapper _mapper;
     private readonly ICacheService _cache;
-    public UserService(IUserRepository userRepository, IMapper mapper, ICacheService cache)
+    private readonly IWorker _worker;
+
+    public UserService(IUserRepository userRepository, IMapper mapper, ICacheService cache, IWorker worker)
     {
         _userRepository = userRepository;
         _mapper = mapper;
         _cache = cache;
+        _worker = worker;
     }
 
     public async Task<UserDetailsModel> AddUser(AddUserRequest model)
@@ -28,12 +31,12 @@ internal class UserService : IUserService
         {
             throw new ApplicationException($"User with login {model.Login} already exists ::pending::");
         }
-        await Task.Delay(5000); // Simulation of external service work
+
+        await _worker.DoWork();
         
         try
         {
-            var user = await _userRepository.AddUser(addUserModel);
-            return _mapper.Map<UserDetailsModel>(user);
+            return await _userRepository.AddUser(addUserModel);
         }
         finally
         {

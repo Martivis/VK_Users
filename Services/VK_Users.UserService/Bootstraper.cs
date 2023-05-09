@@ -14,6 +14,7 @@ public static class Bootstraper
     public static IServiceCollection AddUserService(this IServiceCollection services)
     {
         services.AddScoped<IUserService, UserService>();
+        services.AddSingleton<IWorker, WorkerStub>();
         return services;
     }
 }

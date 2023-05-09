@@ -39,6 +39,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests.Common", "Tests\Tests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VK_Users.AuthService", "Services\VK_Users.AuthService\VK_Users.AuthService.csproj", "{4DDC08D3-B9B1-4655-9046-3F4B36DD6256}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VK_Users.UserServiceTest", "Tests\VK_Users.UserServiceTest\VK_Users.UserServiceTest.csproj", "{A2DE0135-B4F4-4CF4-8CF1-B39AB470E6B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,10 @@ Global
 		{4DDC08D3-B9B1-4655-9046-3F4B36DD6256}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DDC08D3-B9B1-4655-9046-3F4B36DD6256}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DDC08D3-B9B1-4655-9046-3F4B36DD6256}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2DE0135-B4F4-4CF4-8CF1-B39AB470E6B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2DE0135-B4F4-4CF4-8CF1-B39AB470E6B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2DE0135-B4F4-4CF4-8CF1-B39AB470E6B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2DE0135-B4F4-4CF4-8CF1-B39AB470E6B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -114,6 +120,7 @@ Global
 		{CFF4ACDF-DDA8-48CA-A341-1B7C3FF5361A} = {960488FB-2A12-4EB7-8035-694F5270DF74}
 		{B409CD40-77D9-42EB-A626-D31EBDE152FF} = {960488FB-2A12-4EB7-8035-694F5270DF74}
 		{4DDC08D3-B9B1-4655-9046-3F4B36DD6256} = {5080C462-37B2-4D7C-850D-7199ACF2015D}
+		{A2DE0135-B4F4-4CF4-8CF1-B39AB470E6B5} = {960488FB-2A12-4EB7-8035-694F5270DF74}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1A6B02E5-CC39-42E4-9B4D-12D70AD6C870}
