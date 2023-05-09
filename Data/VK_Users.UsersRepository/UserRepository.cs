@@ -62,7 +62,7 @@ internal class UserRepository : IUserRepository, IDisposable
             .Include(e => e.UserGroup)
             .Include(e => e.UserState)
             .OrderByDescending(e => e.CreatedDate)
-            .OrderBy(e => e.Login)
+            .ThenBy(e => e.Login)
             .Skip(page * pageSize).Take(pageSize)
             .ToListAsync();
 
