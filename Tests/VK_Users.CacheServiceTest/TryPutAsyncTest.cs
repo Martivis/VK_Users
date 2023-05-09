@@ -28,13 +28,17 @@ public class TryPutAsyncTest
         var cache = new InMemoryCacheService();
 
         var value = "value";
-        var expected = new ConcurrentBag<string> { value };
+        var expected = new ConcurrentDictionary<string, bool>(
+            new List<KeyValuePair<string, bool>>
+            {
+                new KeyValuePair<string, bool>(value, true),
+            });
 
         // act
         await cache.TryPutAsync(value);
 
         // assert
-        var actual = FieldAccessor.GetValue<InMemoryCacheService, ConcurrentBag<string>>(cache, "_cache");
+        var actual = FieldAccessor.GetValue<InMemoryCacheService, ConcurrentDictionary<string, bool>>(cache, "_cache");
 
         Assert.Equal(expected, actual);
     }
@@ -63,14 +67,18 @@ public class TryPutAsyncTest
         var cache = new InMemoryCacheService();
 
         var value = "value";
-        var expected = new ConcurrentBag<string> { value };
+        var expected = new ConcurrentDictionary<string, bool>(
+            new List<KeyValuePair<string, bool>>
+            {
+                new KeyValuePair<string, bool>(value, true),
+            });
 
         // act
         await cache.TryPutAsync(value);
         await cache.TryPutAsync(value);
 
         // assert
-        var actual = FieldAccessor.GetValue<InMemoryCacheService, ConcurrentBag<string>>(cache, "_cache");
+        var actual = FieldAccessor.GetValue<InMemoryCacheService, ConcurrentDictionary<string, bool>>(cache, "_cache");
 
         Assert.Equal(expected, actual);
     }
