@@ -9,7 +9,7 @@ public static class Bootstraper
 {
     public static IServiceCollection AddUserRepository(this IServiceCollection services)
     {
-        services.AddTransient<IUserRepository, UserRepository>();
+        services.AddScoped<IUserRepository, UserRepository>();
         services.AddSingleton<IPasswordHasher<User>, PasswordHasher<User>>();
         return services;
     }
