@@ -79,6 +79,14 @@ internal class UserRepository : IUserRepository, IDisposable
         return _mapper.Map<UserDetailsModel>(users);
     }
 
+    public async Task<UserModel> GetUserByLogin(string login)
+    {
+        var user = await _context.Set<User>().FirstOrDefaultAsync(e => e.Login == login)
+            ?? throw new ApplicationException($"User with login {login} not found");
+
+        return _mapper.Map<UserModel>(user);
+    }
+
     public async Task UpdateUser(UserModel userModel)
     {
         var user = _mapper.Map<User>(userModel);
