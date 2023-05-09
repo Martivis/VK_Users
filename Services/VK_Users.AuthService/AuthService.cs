@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
+using VK_Users.Context.Entities;
 using VK_Users.UsersRepository;
 
 namespace VK_Users.AuthService;
@@ -28,8 +29,11 @@ internal class AuthService : IAuthService
             return null;
         }
 
-        if (!CheckPassword(user, password))
+        if (user.UserStateId == UserStateId.Blocked ||
+            !CheckPassword(user, password))
+        {
             return null;
+        }
 
         var identity = new ClaimsIdentity(
             claims: new[]

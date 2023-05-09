@@ -44,7 +44,7 @@ internal class UserService : IUserService
     public async Task DeleteUser(Guid uid)
     {
         var user = await _userRepository.GetUserByUid(uid);
-        user.UserStateId = 1;
+        user.UserStateId = UserStateId.Blocked;
 
         await _userRepository.UpdateUser(user);
     }
