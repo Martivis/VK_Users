@@ -12,5 +12,6 @@ System is configured to work on both _Linux_ and _Windows_ platforms.
 
 Starting up may take a time.  
 When the system is running, you can access swagger on `http://localhost:10000/swagger`.
+
 ---
 Authentication works with added users credentials. Authorization is only required for GetUser endpoint
